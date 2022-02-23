@@ -3,24 +3,45 @@ import random
 
 from module import cleaning,animacionMazo
 
+class Pozo:
+
+    def __init__(self):
+        self.pozo = 0
+
+    #def valorPozo(self):
+    #    return self.pozo
+  
+
+
+
 
 class Jugador:
 
-    def __init__(self,puntos):
+    def __init__(self,unPozo,unValorPozo):
         self.cartas = []
-        self.puntos = puntos
+        self.puntos = unPozo.pozo
+        self.unValorPozo = unValorPozo
         self.apuesta = 0
 
     def cantidadCartasEnLaMano(self):
         return len(self.cartas)
     
-    def ingresarApuesta(self):
+    def ingresarApuesta(self,unPozo):
         apuesta = int(input  ("Ingrese su apuesta:"))
 
-        while apuesta >self.puntos or type(apuesta) != int:
-            apuesta = int(input (f"ERROR: Tu dinero es {self.puntos} "))
+        while apuesta >unPozo.pozo or type(apuesta) != int:
+            apuesta = int(input (f"ERROR: El pozo es {unPozo.pozo} "))
 
         self.apuesta = apuesta
+
+        
+    def ingresarPozoBase(self,unPozo):
+        #pozoJugador = int(input  ("Ingrese un valor inicial en el pozo:"))
+
+        #while pozoJugador <=0:
+        #    pozoJugador = int(input (f"ERROR:Se debe ingresar un valor positivo "))
+
+        unPozo.pozo += self.unValorPozo
             
     
     def puntosDisponibles(self):
@@ -133,12 +154,12 @@ class Baraja:
         self.baraja.append(((0,"Comodin1")))
         self.baraja.append((0,"Comodin2"))
     
-
-
+"""
 #INSTANCIO EL MAZO
 barajaEspañola = Baraja([1,2,3,4,5,6,7,10,11,12],["ORO","COPA","ESPADA","BASTO"])
+pozo = Pozo()
 cleaning()
-animacionMazo()
+#animacionMazo()
 
 barajaEspañola.mezclarBaraja()
 
@@ -176,3 +197,4 @@ else:
 
 print(cacho.puntos)
 
+"""
