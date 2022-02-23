@@ -1,5 +1,8 @@
 import random
-from turtle import position
+#from turtle import position
+
+from module import cleaning,animacionMazo
+
 
 class Jugador:
 
@@ -137,13 +140,13 @@ class Baraja:
     
 
 
-        
-
-
-
 #INSTANCIO EL MAZO
 barajaEspañola = Baraja([1,2,3,4,5,6,7,10,11,12],["ORO","COPA","ESPADA","BASTO"])
+cleaning()
+animacionMazo()
+
 barajaEspañola.mezclarBaraja()
+
 
 #INSTANCIO EL JUGADOR
 cacho = Jugador(100)
@@ -165,7 +168,6 @@ barajaEspañola.quitarCarta(cartaRival)
 print(f"CARTA RIVAL: {cartaRival}")
 
 print(cacho.resultado(cartaRival))
-
 
 
 
