@@ -16,21 +16,25 @@ def cleaning():
         os.system('clear')
 
 
-def animacionMazo():
-    print("Mezclando baraja .")
-    sleep(1)
-    cleaning()
-    print("Mezclando baraja ..")
-    sleep(1)
-    cleaning()
-    print("Mezclando baraja ...")
-    sleep(1)
-    cleaning()
-    print("Mezclando baraja ..")
-    sleep(1)
-    cleaning()
-    print("Mezclando baraja .")
-    sleep(1)
-    cleaning()
-    print("Mazo mezclado")
-    sleep(1)
+def animacionMazo(debug = False):
+    if debug:
+        ...
+    else:
+
+        print("Mezclando baraja .")
+        sleep(1)
+        cleaning()
+        print("Mezclando baraja ..")
+        sleep(1)
+        cleaning()
+        print("Mezclando baraja ...")
+        sleep(1)
+        cleaning()
+        print("Mezclando baraja ..")
+        sleep(1)
+        cleaning()
+        print("Mezclando baraja .")
+        sleep(1)
+        cleaning()
+        print("Mazo mezclado")
+        sleep(1)

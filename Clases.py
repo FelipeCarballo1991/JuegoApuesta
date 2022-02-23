@@ -21,11 +21,7 @@ class Jugador:
             apuesta = int(input (f"ERROR: Tu dinero es {self.puntos} "))
 
         self.apuesta = apuesta
-
-        #print(apuesta)
-        #carta = random.choice(unMazo.baraja)
-        #unMazo.quitarCarta(carta)
-        #print(carta)       
+            
     
     def puntosDisponibles(self):
         print (self.puntos)
@@ -84,7 +80,6 @@ class Jugador:
                 else:
                      resultado = "GANE"
 
-        
         return resultado
 
 class Carta:
@@ -150,11 +145,12 @@ barajaEspañola.mezclarBaraja()
 
 #INSTANCIO EL JUGADOR
 cacho = Jugador(100)
+print(cacho.puntos)
 cacho.ingresarApuesta()
 
 for i in range(4):
     cacho.tomarCarta(barajaEspañola)
-#print(cacho.apuesta)
+print(cacho.apuesta)
 
 print(f"MANO DEL JUGADOR: {cacho.cartas}")
 
@@ -167,8 +163,16 @@ barajaEspañola.quitarCarta(cartaRival)
 
 print(f"CARTA RIVAL: {cartaRival}")
 
+
+
 print(cacho.resultado(cartaRival))
 
 
+if cacho.resultado(cartaRival) == "PERDI":
 
+    cacho.puntos -= cacho.apuesta
+else:
+    cacho.puntos +=  cacho.apuesta
+
+print(cacho.puntos)
 
