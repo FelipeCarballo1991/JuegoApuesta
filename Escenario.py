@@ -11,8 +11,8 @@ pozo = Pozo()
 cleaning()
 
 # JUGADORES Y POZO INICIAL
-jugador1= Jugador(pozo,100)
-jugador2= Jugador(pozo,100)
+jugador1= Jugador(pozo,100,"Pepe")
+jugador2= Jugador(pozo,100,"Cacho")
 
 jugador1.ingresarPozoBase(pozo)
 #jugador2.ingresarPozoBase(pozo)
@@ -36,19 +36,3 @@ print(f"Cartas descartadas: {barajaEspañola.descarte}")
 
 print(f"Cartas que quedan para repartir en la proxima ronda: {barajaEspañola.baraja}")
 
-"""
-
-print(f"El Pozo es: {pozo.pozo}")
-jugador2.ingresarApuesta(pozo)
-print(f"El Pozo es: {pozo.pozo}")
-
-#Repartir Cartas
-jugador1.tomarCartas(4,barajaEspañola)
-jugador2.tomarCartas(4,barajaEspañola)
-
-print(f"Mano del jugador1: {jugador1.cartas}")
-print(f"Mano del jugador1: {jugador2.cartas}")
-print("------------------------------------------------------")
-print("Cartas en el mazo:")
-print(barajaEspañola.baraja)
-"""

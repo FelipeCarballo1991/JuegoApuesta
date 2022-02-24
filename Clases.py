@@ -3,6 +3,34 @@ import random
 
 from module import cleaning,animacionMazo
 
+class Partida:
+
+    def __init__(self,numJugadores,unaBaraja,unPozo,jugadores):
+        self.numJugadores = numJugadores
+        self.baraja= unaBaraja
+        self.pozo = unPozo
+        self.jugadores = jugadores
+
+    def mezclarMazo(self,unMazo,cantidadDeVeces):
+
+        for i in range(cantidadDeVeces):
+            unMazo.mezclarBaraja()
+    
+    def setearJugadores(self,unPozo,valorInicialPozo):
+        listaJugadores = []
+        for i in range (self.numJugadores):
+            locals() ["jugador " + str(i)] = Jugador(unPozo,valorInicialPozo,self.jugadores[i])
+            #locals() ["jugador " + str(i)].ingresarPozoBase(valorInicialPozo)falla esta linea
+            listaJugadores.append(locals()["jugador " + str(i)])
+
+        return listaJugadores
+
+    def iniciarPartida(self):
+        ...
+
+         
+         
+
 class Pozo:
 
     def __init__(self):
@@ -14,12 +42,15 @@ class Pozo:
 
 class Jugador:
 
-    def __init__(self,unPozo,credito):
+    def __init__(self,unPozo,credito,unNombre):
         self.cartas = []
         self.puntos = unPozo.pozo
         self.credito = credito
         self.apuesta = 0
+        self.nombre = unNombre
 
+    def __repr__(self):
+        return self.nombre
 
     def cantidadCartasEnLaMano(self):
         return len(self.cartas)
