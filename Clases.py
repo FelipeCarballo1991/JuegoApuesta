@@ -10,18 +10,16 @@ class Pozo:
 
     #def valorPozo(self):
     #    return self.pozo
-  
-
-
 
 
 class Jugador:
 
-    def __init__(self,unPozo,unValorPozo):
+    def __init__(self,unPozo,credito):
         self.cartas = []
         self.puntos = unPozo.pozo
-        self.unValorPozo = unValorPozo
+        self.credito = credito
         self.apuesta = 0
+
 
     def cantidadCartasEnLaMano(self):
         return len(self.cartas)
@@ -33,6 +31,7 @@ class Jugador:
             apuesta = int(input (f"ERROR: El pozo es {unPozo.pozo} "))
 
         self.apuesta = apuesta
+        #unPozo.pozo -= self.apuesta
 
         
     def ingresarPozoBase(self,unPozo):
@@ -41,7 +40,7 @@ class Jugador:
         #while pozoJugador <=0:
         #    pozoJugador = int(input (f"ERROR:Se debe ingresar un valor positivo "))
 
-        unPozo.pozo += self.unValorPozo
+        unPozo.pozo += self.credito
             
     
     def puntosDisponibles(self):
@@ -56,16 +55,10 @@ class Jugador:
         self.cartas.append(carta)
         unMazo.quitarCarta(carta)
 
-    
-    """
-    def tirarCarta(self,unMazo,indice):
-        if self.cantidadCartasEnLaMano() > 0:
-           carta = self.cartas[indice]
-           self.cartas.remove(carta)
-           unMazo.descarte.append(carta)
-        else:
-            return "NO TENGO MAS CARTAS"
-    """
+    def tomarCartas(self,unNumero,unMazo):
+        for i in range(unNumero):
+            self.tomarCarta(unMazo)
+
 
     def tirarCarta(self,unMazo,indice):
         
@@ -77,7 +70,13 @@ class Jugador:
         except IndexError:
             return "NO TENGO MAS CARTAS"
     
-    def resultado(self,unaCartaRival):
+    def tirarCartas(self,unMazo):
+        for carta in self.cartas:            
+            unMazo.descarte.append(carta)  
+        
+        self.cartas = []
+
+    def resultado(self,unaCartaRival,unPozo):
         resultado = ""
     
         self.cartas #LAS DEL JUGADOR
@@ -91,15 +90,23 @@ class Jugador:
                 
         if len(listaAuxiliar) == 0:
             resultado = "PERDI"
+            self.credito-= self.apuesta
+            unPozo.pozo += self.apuesta
         
         else:
             for carta in listaAuxiliar:
                 if (carta.valor == 1):
                     resultado = "GANE"
+                    self.credito+= self.apuesta
+                    unPozo.pozo -= self.apuesta
                 elif (unaCartaRival.valor == 1) or (carta.valor < unaCartaRival.valor): 
                     resultado = "PERDI"
+                    self.credito-= self.apuesta
+                    unPozo.pozo += self.apuesta
                 else:
                      resultado = "GANE"
+                     self.credito+= self.apuesta
+                     unPozo.pozo -= self.apuesta
 
         return resultado
 
